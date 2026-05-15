@@ -1,38 +1,65 @@
+/* --- RESET E BASE --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-gray: #f6f6f2;
+    --border-color: #eeeeee;
+}
+
 body {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #fff;
-    color: #000;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     padding: 20px;
+    line-height: 1.1;
     overflow-x: hidden;
 }
 
-/* TOP BAR */
-.top-bar {
+/* --- NAVEGAÇÃO --- */
+.main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.main-logo {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 700;
-    letter-spacing: -0.05em;
+.nav-links {
+    display: flex;
+    gap: 20px;
 }
 
-/* GRID QUE CENTRALIZA TUDO */
+.nav-links a {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- HERO GRID (PÁGINA INICIAL) --- */
+.main-logo {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr; /* Três colunas: a do meio é maior */
+    grid-template-columns: 1fr 1.5fr 1fr;
     gap: 20px;
     align-items: start;
-    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -42,24 +69,15 @@ body {
     flex-direction: column;
 }
 
-/* COLUNA CENTRAL (ONDE FICA A IMAGEM) */
 .hero-col.center {
-    align-items: center; /* Centraliza a imagem horizontalmente */
+    align-items: center;
     justify-content: center;
 }
 
 .hero-illustration {
-    width: 100%;
-    max-width: 600px; /* Ajuste o tamanho máximo da imagem aqui */
+    width: 110%;
     height: auto;
     mix-blend-mode: multiply;
-}
-
-/* TEXTOS LATERAIS */
-.primary-nav, .nav-top {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
 }
 
 .primary-nav a, .nav-top a {
@@ -67,45 +85,51 @@ body {
     font-weight: 700;
     text-decoration: none;
     color: #000;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
+    line-height: 0.95;
+    margin-bottom: 5px;
 }
 
 .secondary-nav {
-    text-align: right; /* Alinha os textos da direita para o canto */
+    text-align: right;
 }
 
-/* BOX DE LOGIN */
+/* CAIXA DE LOGIN / NETWORK */
 .network-box {
     margin-top: 40px;
     text-align: left;
 }
 
 .network-box h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     line-height: 0.9;
     margin-bottom: 20px;
+    letter-spacing: -0.03em;
 }
 
 .btn {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 10px;
     font-family: inherit;
     font-weight: 700;
     border: 2px solid #000;
     cursor: pointer;
     background: transparent;
+    text-transform: uppercase;
 }
 
-.btn-black { background: #000; color: #fff; }
+.btn-black {
+    background: #000;
+    color: #fff;
+}
 
-/* SEÇÃO DE LANÇAMENTOS */
+/* --- SEÇÃO DE LANÇAMENTOS (RELEASES) --- */
 .section-title {
     font-size: clamp(2rem, 8vw, 5rem);
     text-align: center;
     margin: 80px 0 40px;
+    letter-spacing: -0.04em;
 }
 
 .product-grid {
@@ -116,16 +140,142 @@ body {
 }
 
 .product-card {
-    background: #f6f6f2;
+    background: var(--accent-gray);
     padding: 20px;
     width: 280px;
+    border-radius: 4px;
 }
 
-/* RESPONSIVO PARA CELULAR */
-@media (max-width: 900px) {
-    .hero-grid {
-        grid-template-columns: 1fr; /* No celular, vira uma coluna só */
-        text-align: center;
+.product-card img {
+    width: 100%;
+    filter: grayscale(1);
+    transition: filter 0.3s;
+}
+
+.product-card:hover img {
+    filter: grayscale(0);
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* --- PÁGINA ACADÊMICO (ESPECÍFICO) --- */
+.academic-container {
+    padding: 40px 2vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.academic-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #000;
+    padding-bottom: 10px;
+}
+
+.academic-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 50px;
+}
+
+/* TERMINAL DE CÓDIGO ESP32 */
+.code-terminal {
+    background: #000;
+    color: #fff;
+    padding: 25px;
+    font-family: 'Courier New', monospace;
+    border-radius: 2px;
+    box-shadow: 10px 10px 0px #eee;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+/* GRID DE IMAGENS ACADÊMICO */
+.academic-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.grid-img {
+    aspect-ratio: 1;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #aaa;
+    border: 1px solid var(--border-color);
+    text-transform: uppercase;
+}
+
+.academic-description h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+}
+
+.academic-description p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: justify;
+    opacity: 0.8;
+}
+
+/* --- LABELS LATERAIS (VERTICAL) --- */
+.side-label {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.side-label.left { transform: rotate(180deg); }
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1000px) {
+    .hero-grid, .academic-grid {
+        grid-template-columns: 1fr;
     }
-    .secondary-nav { text-align: center; }
+    
+    .secondary-nav {
+        text-align: left;
+    }
+    
+    .nav-top {
+        justify-content: flex-start;
+        margin-top: 20px;
+    }
+    
+    .hero-illustration {
+        width: 80%;
+        margin: 20px auto;
+    }
 }
