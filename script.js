@@ -1,44 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica da Intro (Scroll para Entrar) ---
+    const introScreen = document.getElementById('introScreen');
+    const body = document.body;
+
+    // Função que faz a transição (Fade Out Intro / Fade In Site)
+    const enterSite = () => {
+        // Se a intro já foi escondida, não faz nada
+        if (introScreen.classList.contains('hide')) return;
+
+        introScreen.classList.add('hide'); // Inicia Fade Out
+        body.classList.add('site-active'); // Ativa cores do site e libera scroll
+        
+        // Remove o elemento da intro do DOM após a animação para performance
+        setTimeout(() => {
+            introScreen.remove();
+        }, 1000); // Tempo igual ao 'transition' do CSS (1s)
+    };
+
+    // Ouvintes de evento para detectar intenção de entrada
+    introScreen.addEventListener('click', enterSite); // Clicar entra
+    window.addEventListener('wheel', enterSite); // Scroll do mouse entra
+    window.addEventListener('touchmove', enterSite); // Scroll no celular entra
+    window.addEventListener('keydown', (e) => { // Qualquer tecla entra
+        if (e.key === 'Enter' || e.key === ' ') enterSite();
+    });
+
+
+    // --- Lógica do Carrinho Lateral (Do site anterior) ---
     const cartToggleBtn = document.querySelector('.cart-toggle');
     const closeCartBtn = document.querySelector('.close-cart');
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
-    const newsletterForm = document.getElementById('newsletter-form');
 
-    // Toggle Cart functionality
     const toggleCart = () => {
+        // Só permite abrir se a intro já passou
+        if (!body.classList.contains('site-active')) return;
+        
         cartSidebar.classList.toggle('open');
         cartOverlay.classList.toggle('active');
-        document.body.style.overflow = cartSidebar.classList.contains('open') ? 'hidden' : '';
     };
 
     cartToggleBtn.addEventListener('click', toggleCart);
     closeCartBtn.addEventListener('click', toggleCart);
     cartOverlay.addEventListener('click', toggleCart);
-
-    // Simple newsletter submission mock
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const input = newsletterForm.querySelector('input');
-        input.value = 'ADDED TO THE DATABASE.';
-        setTimeout(() => {
-            input.value = '';
-        }, 2000);
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 });
