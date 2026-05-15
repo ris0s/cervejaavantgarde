@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROCESS BREWING</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-links left">
+            <a href="#">Shop</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="nav-logo">
+            <h1>PROCESS</h1>
+        </div>
+        <div class="nav-links right">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <button class="icon-btn cart-toggle" aria-label="Cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="categories">
+        <a href="#" class="active">ALL</a>
+        <a href="#">LAGERS</a>
+        <a href="#">ALES</a>
+        <a href="#">MERCH</a>
+    </div>
+
+    <main class="product-grid">
+        <article class="product-card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1657218671842-8854ba5f514b?q=80&w=800&auto=format&fit=crop" alt="The Trial - Imperial Stout">
+            </div>
+            <div class="product-info">
+                <h3>The Trial / Imperial Stout</h3>
+                <span class="price">R$ 45,00</span>
+            </div>
+        </article>
+
+        <article class="product-card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1614316345681-42cb91b92e74?q=80&w=800&auto=format&fit=crop" alt="Main Bus - Double IPA">
+            </div>
+            <div class="product-info">
+                <h3>Main Bus / Double IPA</h3>
+                <span class="price">R$ 50,00</span>
+            </div>
+        </article>
+
+        <article class="product-card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1566416668744-2f2f7902d184?q=80&w=800&auto=format&fit=crop" alt="Vira-Lata - Sour Ale">
+            </div>
+            <div class="product-info">
+                <h3>Vira-Lata / Sour Ale</h3>
+                <span class="price">R$ 38,00</span>
+            </div>
+        </article>
+    </main>
+
+    <section id="about" class="about-section">
+        <h2>AUTOMATION & DECAY</h2>
+        <p>We are an independent brewery obsessed with precision. Every batch is monitored through custom microcontrollers, logging temperature data directly into our SQL databases to ensure absolute control over the fermentation process. Raw ingredients. Brutalist methodology. No compromises.</p>
+    </section>
+
+    <footer>
+        <div class="newsletter">
+            <p>JOIN THE NETWORK</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="EMAIL ADDRESS" required>
+                <button type="submit">→</button>
+            </form>
+        </div>
+        <div class="footer-links">
+            <p>© 2026 PROCESS BREWING</p>
+            <p>SÃO PAULO / SP</p>
+        </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>CART</h2>
+            <button class="close-cart">✕</button>
+        </div>
+        <div class="cart-body">
+            <p class="empty-msg">YOUR CART IS EMPTY.</p>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
