@@ -1,4 +1,223 @@
-/* Base Resets & Variables */
+/* --- Base & Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f6f6f2; /* Creme Suave */
+    --text-color: #050505; /* Quase Preto */
+    --brutal-black: #000;
+}
+
+body {
+    background-color: var(--brutal-black); /* Começa preto para a Intro */
+    color: var(--text-color);
+    font-family: 'Space Grotesk', Helvetica, sans-serif;
+    line-height: 1.5;
+    overflow: hidden; /* Bloqueia scroll durante a intro */
+    transition: background-color 0.8s ease; /* Fade para a cor creme */
+}
+
+/* Estado quando o site real está ativo */
+body.site-active {
+    background-color: var(--bg-color);
+    overflow: visible; /* Libera scroll */
+}
+
+a { color: inherit; text-decoration: none; transition: opacity 0.3s; }
+a:hover { opacity: 0.5; }
+
+button { background: none; border: none; cursor: pointer; font-family: inherit; color: inherit; }
+
+/* --- 1. Estrutura da Intro Brutalista --- */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--brutal-black);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: opacity 1s cubic-bezier(0.65, 0, 0.35, 1), visibility 1s;
+}
+
+/* Quando a intro é escondida (Fade Out) */
+.intro-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Placeholder do Logo (Desenho) */
+.logo-placeholder {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    color: #fff; /* Cor do desenho do logo */
+}
+
+.logo-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Nome GIGANTE na Intro */
+.mega-title {
+    font-size: clamp(5rem, 18vw, 15rem); /* Dinâmico */
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+    text-transform: uppercase;
+}
+
+.scroll-prompt {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 4rem;
+    opacity: 0.7;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* --- 2. Estrutura do Site Real (Fade In) --- */
+.main-site-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s 0.3s ease, transform 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+}
+
+/* Ativa o fade-in do site */
+body.site-active .main-site-content {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* --- 3. CSS do Site (Anterior, Ajustado) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 4vw;
+    border-bottom: 1px solid #ddd;
+    background-color: var(--bg-color);
+}
+
+.nav-links { display: flex; gap: 1.5rem; text-transform: uppercase; font-size: 0.85rem; font-weight: 500;}
+
+/* O logo na Nav permanece grande, mas menor que a intro */
+.nav-logo h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.cart-count { font-size: 0.7rem; margin-left: 5px; }
+
+/* Product Grid Editorial */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4vw;
+    padding: 6vw 4vw;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.img-container {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.editorial-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; font-weight: 700; color: #aaa;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .editorial-placeholder {
+    transform: scale(1.1);
+    color: var(--brutal-black);
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding-top: 1rem;
+}
+
+/* About Section */
+.about-section {
+    padding: 10vw 4vw;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section h2 { font-size: 2rem; margin-bottom: 2rem; }
+.about-section p { font-size: 1.2rem; color: #555; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #ddd;
+    padding: 4vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+}
+
+/* Carrinho Lateral (Ajustes Mínimos) */
+.cart-sidebar {
+    position: fixed; top: 0; right: -100%; /* Escondido */
+    width: 400px; max-width: 100vw; height: 100vh;
+    background: #fff; z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-sidebar.open { right: 0; }
+.cart-header { display: flex; justify-content: space-between; padding: 2rem; border-bottom: 1px solid #eee;}
+.cart-body { display: flex; align-items: center; justify-content: center; height: 80%; }
+
+.cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5); z-index: 1500;
+    opacity: 0; visibility: hidden; transition: 0.4s;
+}
+
+.cart-overlay.active { opacity: 1; visibility: visible; }/* Base Resets & Variables */
 * {
     margin: 0;
     padding: 0;
