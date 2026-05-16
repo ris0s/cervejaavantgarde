@@ -1,4 +1,4 @@
-/* --- RESET E BASE --- */
+/* --- RESET E DEFINIÇÕES TÉCNICAS --- */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     --bg-color: #ffffff;
     --text-color: #000000;
     --accent-gray: #f6f6f2;
-    --border-color: #eeeeee;
+    --border-color: #000000;
 }
 
 body {
@@ -18,7 +18,6 @@ body {
     color: var(--text-color);
     padding: 20px;
     line-height: 1.1;
-    overflow-x: hidden;
 }
 
 /* --- NAVEGAÇÃO --- */
@@ -27,11 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
+    padding: 10px 0;
 }
 
 .nav-links a {
@@ -40,21 +35,17 @@ body {
     text-decoration: none;
     color: var(--text-color);
     text-transform: uppercase;
+    margin-right: 20px;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-/* --- HERO GRID (PÁGINA INICIAL) --- */
 .main-logo {
     font-size: clamp(3rem, 12vw, 8rem);
     font-weight: 700;
     letter-spacing: -0.05em;
     text-align: center;
-    margin-bottom: 10px;
 }
 
+/* --- GRID DA PÁGINA INICIAL (MELANINA) --- */
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
@@ -64,19 +55,9 @@ body {
     margin: 0 auto;
 }
 
-.hero-col {
-    display: flex;
-    flex-direction: column;
-}
-
-.hero-col.center {
-    align-items: center;
-    justify-content: center;
-}
-
 .hero-illustration {
-    width: 110%;
-    height: auto;
+    width: 100%;
+    max-width: 600px;
     mix-blend-mode: multiply;
 }
 
@@ -86,196 +67,129 @@ body {
     text-decoration: none;
     color: #000;
     line-height: 0.95;
-    margin-bottom: 5px;
+    display: block;
 }
 
-.secondary-nav {
-    text-align: right;
-}
+.secondary-nav { text-align: right; }
 
-/* CAIXA DE LOGIN / NETWORK */
 .network-box {
     margin-top: 40px;
     text-align: left;
 }
 
-.network-box h2 {
-    font-size: 2.8rem;
-    line-height: 0.9;
-    margin-bottom: 20px;
-    letter-spacing: -0.03em;
-}
-
 .btn {
     display: block;
     width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    font-family: inherit;
+    padding: 12px;
+    margin-top: 10px;
     font-weight: 700;
     border: 2px solid #000;
     cursor: pointer;
-    background: transparent;
     text-transform: uppercase;
+    background: transparent;
 }
 
-.btn-black {
-    background: #000;
-    color: #fff;
-}
+.btn-black { background: #000; color: #fff; }
 
-/* --- SEÇÃO DE LANÇAMENTOS (RELEASES) --- */
-.section-title {
-    font-size: clamp(2rem, 8vw, 5rem);
-    text-align: center;
-    margin: 80px 0 40px;
-    letter-spacing: -0.04em;
-}
-
-.product-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.product-card {
-    background: var(--accent-gray);
-    padding: 20px;
-    width: 280px;
-    border-radius: 4px;
-}
-
-.product-card img {
-    width: 100%;
-    filter: grayscale(1);
-    transition: filter 0.3s;
-}
-
-.product-card:hover img {
-    filter: grayscale(0);
-}
-
-.product-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-/* --- PÁGINA ACADÊMICO (ESPECÍFICO) --- */
+/* --- PÁGINA ACADÊMICO (ESTRUTURA TÉCNICA) --- */
 .academic-container {
-    padding: 40px 2vw;
+    padding: 40px 0;
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .academic-title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: clamp(2rem, 8vw, 5rem);
     font-weight: 700;
-    letter-spacing: -0.04em;
-    margin-bottom: 40px;
     border-bottom: 3px solid #000;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
 .academic-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.2fr 1fr; /* Proporção código vs lateral */
+    gap: 40px;
+    align-items: start;
 }
 
-/* TERMINAL DE CÓDIGO ESP32 */
+/* TERMINAL DE CÓDIGO (ESQUERDA) */
 .code-terminal {
     background: #000;
     color: #fff;
     padding: 25px;
     font-family: 'Courier New', monospace;
     border-radius: 2px;
-    box-shadow: 10px 10px 0px #eee;
+    overflow-x: auto;
 }
 
 .terminal-header {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #333;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 0.8rem;
-    color: #888;
+    color: #666;
 }
 
 pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    font-size: 0.85rem;
     line-height: 1.4;
-    font-size: 0.95rem;
 }
 
-/* GRID DE IMAGENS ACADÊMICO */
+/* SIDEBAR E GRID DE IMAGENS (DIREITA) */
+.academic-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* O segredo para as imagens ficarem menores está aqui: */
 .academic-image-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+    gap: 10px;
+    width: 100%;
+    max-width: 450px;      /* Limita a largura do bloco de imagens */
     margin-bottom: 30px;
 }
 
 .grid-img {
-    aspect-ratio: 1;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.7rem;
-    color: #aaa;
-    border: 1px solid var(--border-color);
-    text-transform: uppercase;
+    width: 100%;
+    height: 180px;         /* Altura controlada para não esticar o site */
+    object-fit: cover;     /* Corta a imagem para preencher o quadrado */
+    filter: grayscale(1);  /* Estética P&B */
+    border: 1px solid #000;
+    display: block;
 }
 
 .academic-description h3 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    letter-spacing: -0.03em;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     line-height: 0.9;
 }
 
 .academic-description p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.4;
     text-align: justify;
     opacity: 0.8;
 }
 
-/* --- LABELS LATERAIS (VERTICAL) --- */
-.side-label {
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 10px;
+/* LANÇAMENTOS (FOOTER DA HOME) */
+.section-title {
+    font-size: clamp(2rem, 8vw, 5rem);
+    text-align: center;
+    margin: 60px 0;
 }
 
-.side-label.left { transform: rotate(180deg); }
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 1000px) {
+/* RESPONSIVIDADE PARA CELULAR */
+@media (max-width: 900px) {
     .hero-grid, .academic-grid {
         grid-template-columns: 1fr;
     }
-    
-    .secondary-nav {
-        text-align: left;
-    }
-    
-    .nav-top {
-        justify-content: flex-start;
-        margin-top: 20px;
-    }
-    
-    .hero-illustration {
-        width: 80%;
-        margin: 20px auto;
-    }
+    .secondary-nav { text-align: left; }
+    .academic-image-grid { max-width: 100%; } /* No celular elas podem crescer um pouco */
 }
